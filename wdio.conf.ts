@@ -1,5 +1,6 @@
-import url from 'node:url';
 import path from 'node:path';
+import url from 'node:url';
+
 import { hooks } from './src/support/hooks.js';
 
 const dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -60,7 +61,7 @@ export const config: WebdriverIO.Config = {
         // adding brave browser support
         // browserName: 'chrome',
         // 'goog:chromeOptions': {
-        //     binary: 'C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe',
+        //     binary: 'C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe',
         //     args: ['--disable-gpu'],
         // },
 
@@ -183,12 +184,7 @@ export const config: WebdriverIO.Config = {
         profile: [],
         // <string[]> (file/dir) require files before executing features
         require: [
-            './src/step-definitions/given.js',
-            './src/step-definitions/then.js',
-            './src/step-definitions/when.js',
-            // Or search a (sub)folder for JS files with a wildcard
-            // works since version 1.1 of the wdio-cucumber-framework
-            // './src/**/*.js',
+            './src/step-definitions/*.ts'
         ],
         scenarioLevelReporter: false,
         order: 'defined',

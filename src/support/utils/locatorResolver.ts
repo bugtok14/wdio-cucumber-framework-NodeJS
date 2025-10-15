@@ -1,8 +1,8 @@
-import { sample } from '../../maps/sample.map.js';
-import { login } from '../../maps/login.map.js';
-import { main } from '../../maps/main.map.js';
+import { sample } from '../../maps/sample.map';
+import { login } from '../../maps/login.map';
+import { main } from '../../maps/main.map';
 
-const maps = {
+const maps: { [key: string]: any } = {
     sample,
     login,
     main,
@@ -14,7 +14,7 @@ const maps = {
  * @param {string} path The path to the locator.
  * @returns {string} The locator string.
  */
-export function resolveLocator(path) {
+export function resolveLocator(path: string): string {
     const parts = path.split('.');
     let current = maps;
 

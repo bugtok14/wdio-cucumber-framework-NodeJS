@@ -1,6 +1,6 @@
 import { When } from '@cucumber/cucumber';
 
-import { resolveLocator } from '../support/utils/locatorResolver.js';
+import { resolveLocator } from '../support/utils/locatorResolver';
 
 When(
     /^I login with username "([^"]+)" and password "([^"]+)"$/,
@@ -19,7 +19,7 @@ When(
 
 When(
     /^I (click|doubleclick) on the (link|button|element) "([^"]+)"$/,
-    async (action, _elementType, locatorPath) => {
+    async (action: string, _elementType: string, locatorPath: string) => {
         const locator = resolveLocator(locatorPath);
         const elem = await $(locator);
 
@@ -31,7 +31,7 @@ When(
     }
 );
 
-When(/^I (add|set) "([^"]+)" to the inputfield "([^"]+)"$/, async (action, value, locatorPath) => {
+When(/^I (add|set) "([^"]+)" to the inputfield "([^"]+)"$/, async (action: string, value: string, locatorPath: string) => {
     const locator = resolveLocator(locatorPath);
     const elem = await $(locator);
 
@@ -42,13 +42,13 @@ When(/^I (add|set) "([^"]+)" to the inputfield "([^"]+)"$/, async (action, value
     }
 });
 
-When(/^I clear the inputfield "([^"]+)"$/, async (locatorPath) => {
+When(/^I clear the inputfield "([^"]+)"$/, async (locatorPath: string) => {
     const locator = resolveLocator(locatorPath);
     const elem = await $(locator);
     await elem.clearValue();
 });
 
-When(/^I wait element "([^"]+)" within "([^"]+)" seconds$/, async (locatorPath, sec) => {
+When(/^I wait element "([^"]+)" within "([^"]+)" seconds$/, async (locatorPath: string, sec: string) => {
     const milliseconds = parseInt(sec, 10) * 1000;
 
     await browser.waitUntil(
@@ -63,71 +63,3 @@ When(/^I wait element "([^"]+)" within "([^"]+)" seconds$/, async (locatorPath, 
         }
     );
 });
-
-// When(
-//     /^I drag element "([^"]*)?" to element "([^"]*)?"$/,
-
-// );
-
-// When(
-//     /^I set a cookie "([^"]*)?" with the content "([^"]*)?"$/,
-
-// );
-
-// When(
-//     /^I delete the cookie "([^"]*)?"$/,
-
-// );
-
-// When(
-//     /^I press "([^"]*)?"$/,
-
-// );
-
-// When(/^I (accept|dismiss) the (alertbox|confirmbox|prompt)$/, async (action, type) => {
-//     if (action === 'accept') {
-//         await browser.acceptAlert();
-//     } else {
-//         await browser.dismissAlert();
-//     }
-// });
-
-// When(
-//     /^I enter "([^"]*)?" into the prompt$/,
-
-// );
-
-// When(
-//     /^I scroll to element "([^"]*)?"$/,
-
-// );
-
-// When(
-//     /^I close the last opened (window|tab)$/,
-
-// );
-
-// When(
-//     /^I focus the last opened (window|tab)$/,
-
-// );
-
-// When(
-//     /^I select the (\d+)(st|nd|rd|th) option for element "([^"]*)?"$/,
-
-// );
-
-// When(
-//     /^I select the option with the (name|value|text) "([^"]*)?" for element "([^"]*)?"$/,
-
-// );
-
-// When(
-//     /^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/,
-
-// );
-
-// When(
-//     /^I switch to the iframe "([^"]*)?"$/,
-
-// );
